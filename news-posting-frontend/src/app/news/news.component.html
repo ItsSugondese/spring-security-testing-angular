@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<ng-component *ngIf="loading then load; else fetched;"></ng-component>;
+
+<ng-template #fetched>
+    <div class="d-flex flex-column justify-content-center" style="padding: 30px; border: 2px solid red; margin-top: 10px; background-color: white;">
+        <div class="text-center">
+          <img [src]="news.thumbnail" style="width: 500px; height: auto;" /><br>
+          <h1>
+            {{news.title}}
+          </h1>
+        </div>
+       
+        <div class="text-left">
+            {{news.content}}
+          </div>
+      
+      </div>
+      
+</ng-template>
+
+
+<ng-template #load>
+    Wait data is fetching...
+</ng-template>

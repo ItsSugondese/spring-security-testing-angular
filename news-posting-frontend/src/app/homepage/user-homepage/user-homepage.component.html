@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+
+
+<ng-component *ngIf="loading then load; else fetched;"></ng-component>;
+
+<ng-template #fetched>
+    <ng-component *ngIf="allNews.length > 0 then news else notify;"></ng-component>
+    <ng-template #news>
+<div class="flex-container" >
+    <div *ngFor="let news of allNews; let i = index" (click)="navigate(news.nid)">
+      <div class="img-container">
+        <img class="card-img-top img-fluid" [src]="news.thumbnail" style="width: auto; height: 200px; object-fit: contain;"
+          alt="Card image cap">
+      </div>
+      <div class="card-body">
+        <p class="card-text"> {{news.title}} </p>
+       
+
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #notify>
+   
+    Nothing has been posted yet
+
+</ng-template>
+</ng-template>
+
+<ng-template #load>
+    Wait data is fetching...
+</ng-template>
+
+<!-- <div class="flex-container" >
+    <div *ngFor="let user of userList; let i = index">
+      <div class="img-container">
+        <img class="card-img-top img-fluid" src="../../assets/images/profile.png" style="width: auto;"
+          alt="Card image cap">
+      </div>
+      <div class="card-body">
+        <p class="card-text"> {{user.name}} </p>
+        <button (click)="isSend[i] ? cancelRequest(user.sessionId, i) : sendRequest(user.sessionId, i)">{{isSend[i] ? "Cancel" : "Add Friend"}}</button>
+
+      </div>
+    </div>
+  </div> -->
+
